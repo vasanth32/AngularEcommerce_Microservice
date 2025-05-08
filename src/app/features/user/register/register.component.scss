@@ -1,0 +1,98 @@
+/* Add your register form styles here */ 
+
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6fa;
+}
+
+.register-card {
+  background: #fff;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #555;
+  font-size: 0.97rem;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: border 0.2s;
+}
+input:focus {
+  border-color: #6366f1;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.7rem;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+button[disabled] {
+  background: #b3b7f7;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #e53e3e;
+  font-size: 0.93rem;
+  margin-top: 0.2rem;
+}
+
+.login-link {
+  margin-top: 1.2rem;
+  font-size: 0.97rem;
+  color: #555;
+}
+.login-link a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  background: #f3f4f6;
+  transition: background 0.2s;
+}
+.login-link a:hover {
+  background: #e0e7ff;
+  text-decoration: underline;
+} 
