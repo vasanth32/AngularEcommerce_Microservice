@@ -1,39 +1,32 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+
+export interface RegisterRequest {
+  name: string;
+  email: string;
+  password: string;
+}
+
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule , RouterModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  registerForm: FormGroup;
-  error: string | null = null;
+  registerData: RegisterRequest = { name: '', email: '', password: '' };
+  message = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private userService: UserService,
-    private router: Router
-  ) {
-    this.registerForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
+  constructor(private authService: AuthService) {}
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      this.userService.register(this.registerForm.value).subscribe({
-        next: () => this.router.navigate(['/user/login']),
-        error: err => this.error = err.error?.message || 'Registration failed'
-      });
-    }
+    this.authService.register(this.registerData).subscribe({
+      next: () => this.message = 'Registration successful!',
+      error: (err: any) => this.message = 'Registration failed: ' + (err.error?.message || err.statusText)
+    });
   }
 } 

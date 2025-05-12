@@ -11,7 +11,7 @@ export class UserService {
   }
 
   login(data: any): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>('/api/user/login', data)
+    return this.http.post<{ token: string }>('http://localhost:5004/api/login', data)
       .pipe(tap(res => localStorage.setItem('token', res.token)));
   }
 
