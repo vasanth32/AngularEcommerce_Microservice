@@ -1,1 +1,17 @@
-<p>product works!</p>
+<div class="product-list">
+  <h2>Products</h2>
+  <div class="products-container">
+    <div class="product-card" *ngFor="let product of products">
+      <h3>{{ product.name }}</h3>
+      <p class="description">{{ product.description }}</p>
+      <div class="details">
+        <span class="price">${{ product.price }}</span>
+        <span class="category">Category: {{ product.category }}</span>
+        <span class="quantity">In stock: {{ product.quantity }}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="products.length === 0">
+    No products found.
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './product.component.scss'
 })
 export class ProductComponent {
+  products: any[] = [];
 
+  constructor(private http: HttpClient) {
+    this.http.get<any[]>('http://localhost:5000/api/Products/defaults').subscribe(data => {
+      this.products = data;
+    });
+  }
 }
